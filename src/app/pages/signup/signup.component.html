@@ -1,0 +1,45 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <span class="eyebrow">Get started</span>
+    <h2>Create your account</h2>
+    <p class="subtitle">Save destinations and pick up your trip planning anywhere.</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>
+        Name
+        <input type="text" formControlName="name" placeholder="Jane Traveler" />
+        <span class="error-message" *ngIf="name.touched && name.invalid">
+          Enter your name
+        </span>
+      </label>
+
+      <label>
+        Email
+        <input type="email" formControlName="email" placeholder="you@example.com" />
+        <span class="error-message" *ngIf="email.touched && email.invalid">
+          Enter a valid email address
+        </span>
+      </label>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" placeholder="At least 6 characters" />
+        <span class="error-message" *ngIf="password.touched && password.invalid">
+          Password must be at least 6 characters
+        </span>
+      </label>
+
+      <div class="error-message banner" *ngIf="serverError">
+        {{ serverError }}
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="form.invalid || loading">
+        {{ loading ? 'Creating account…' : 'Create account' }}
+      </button>
+    </form>
+
+    <p class="switch-link">
+      Already have an account? <a routerLink="/login">Log in</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+   box-sizing: border-box;
+  justify-content: center;
+  background: var(--color-sand);
+  padding: 120px 24px 60px;
+  
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-coral-dark);
+  margin-bottom: 10px;
+}
+
+.auth-card h2 {
+  font-size: 26px;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(31, 36, 48, 0.65);
+  margin-bottom: 28px;
+}
+
+form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 16px;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  border: 1.5px solid var(--color-line);
+  border-radius: 10px;
+  background: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.15);
+}
+
+.error-message {
+  display: block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #9d1a1a;
+}
+
+.error-message.banner {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #f2a9a0;
+  background: rgba(255, 221, 218, 0.9);
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-cream);
+  background: var(--color-coral);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--color-coral-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255, 107, 74, 0.35);
+}
+
+.submit-button:disabled {
+  background: var(--color-line);
+  color: rgba(31, 36, 48, 0.45);
+  cursor: not-allowed;
+}
+
+.switch-link {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(31, 36, 48, 0.7);
+  margin-top: 22px;
+  margin-bottom: 0;
+}
+
+.switch-link a {
+  color: var(--color-coral-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}

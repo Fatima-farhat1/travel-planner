@@ -1,0 +1,25 @@
+<div class="favorites-page">
+  <div class="favorites-header">
+    <span class="eyebrow">Your shortlist</span>
+    <h2>Favorites</h2>
+    <p class="subtitle">Cities you've saved, ready whenever you start booking.</p>
+  </div>
+
+  <div class="results" *ngIf="favorites.length; else empty">
+    <div class="ticket-card result-card" *ngFor="let fav of favorites">
+      <div class="result-image" [style.backgroundImage]="'url(' + fav.image + ')'"></div>
+      <div class="result-body">
+        <h4>{{ fav.name }}</h4>
+        <p>{{ fav.description }}</p>
+        <button class="remove-button" (click)="remove(fav)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <div class="empty-state">
+      <p>No favorites yet. Search a destination and save the ones you like.</p>
+      <button class="search-link" routerLink="/search-city">Search destinations</button>
+    </div>
+  </ng-template>
+</div>

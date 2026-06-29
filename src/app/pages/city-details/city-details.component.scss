@@ -1,0 +1,46 @@
+.city-details-page {
+  min-height: 100vh;
+  background: var(--color-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 60px;
+}
+
+.city-details-card {
+  max-width: 480px;
+  text-align: center;
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 44px 36px;
+}
+
+.city-details-card h2 {
+  font-size: 26px;
+  color: var(--color-ink);
+  margin-bottom: 14px;
+}
+
+.city-details-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(31, 36, 48, 0.7);
+  margin-bottom: 26px;
+}
+
+.back-button {
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-cream);
+  background: var(--color-coral);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background: var(--color-coral-dark);
+}

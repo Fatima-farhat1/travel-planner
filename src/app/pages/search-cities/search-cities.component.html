@@ -1,0 +1,62 @@
+
+<!--<div  class="search-cities-container">
+    <h3>{{ title }}</h3>
+    <div *ngIf="city.touched && city.invalid">
+     if touched the input field and didnt type anything an error message appear
+      <p class="error-message">City is required</p>
+    </div>
+        <div *ngIf="city.touched && city.errors?.minlength">
+        if touched the input field and typed less than 3 characters an error message appear
+        <p class="error-message">City name must be at least 3 characters long</p>
+    </div>
+    <input type="text" [formControl]="city" placeholder="Enter city name"  class="search-input">
+    
+
+    <button type="button"  [disabled]="city.invalid" class="search-button"> 
+        Search
+        </button>
+        
+</div>-->
+
+<div class="search-page">
+  <div class="search-cities-container">
+    <span class="eyebrow">Step 1 of 3</span>
+    <h3>{{ title }}</h3>
+    <p class="hint">Try a city like "Lisbon" or "Kyoto" — we'll handle the rest.</p>
+
+    <div class="field">
+      <input
+        type="text"
+        [formControl]="city"
+        placeholder="Enter city name"
+        class="search-input"
+        [class.invalid]="city.touched && city.invalid"
+      />
+
+      <div *ngIf="city.touched && city.errors?.required" class="error-message">
+        City is required
+      </div>
+      <div *ngIf="city.touched && city.errors?.minlength" class="error-message">
+        City name must be at least 3 characters long
+      </div>
+    </div>
+
+    <button type="button" [disabled]="city.invalid" class="search-button" (click)="onSearch()">
+      Search
+    </button>
+  </div>
+
+  <!-- Results — wire this up to your real API response -->
+  <div class="results" *ngIf="results.length">
+    <div class="ticket-card result-card" *ngFor="let result of results">
+      <div class="result-image" [style.backgroundImage]="'url(' + result.image + ')'"></div>
+      <div class="result-body">
+        <h4>{{ result.name }}</h4>
+        <p>{{ result.description }}</p>
+        <button class="save-button" (click)="saveFavorite(result)" [disabled]="isSaved(result)">
+          {{ isSaved(result) ? 'Saved ✓' : 'Save to favorites' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

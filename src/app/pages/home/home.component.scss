@@ -1,0 +1,264 @@
+/*
+.hero {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fade 9s infinite;
+}
+
+
+.slide1 {
+  background-image: url("/assets/images/img1.jpg");
+  animation-delay: 0s;
+}
+
+.slide2 {
+  background-image: url("/assets/images/img2.jpg");
+  animation-delay: 3s;
+}
+
+.slide3 {
+  background-image: url("/assets/images/img3.jpg");
+  animation-delay: 6s;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+.content {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  color: rgb(0, 0, 0);
+  z-index: 2;
+}
+
+.button {
+  color: #000000;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: rgba(44, 41, 41, 0.2);
+  border-color: rgb(0, 0, 0);
+} */
+  .hero {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ALL SLIDES ON TOP OF EACH OTHER */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fade 9s infinite;
+}
+
+.slide1 {
+  background-image: url('/assets/images/img1.jpg');
+  animation-delay: 0s;
+}
+
+.slide2 {
+  background-image: url('/assets/images/img2.jpg');
+  animation-delay: 3s;
+}
+
+.slide3 {
+  background-image: url('/assets/images/img3.jpg');
+  animation-delay: 6s;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Darken + warm the photos slightly so white/dark text both read clearly */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 24, 43, 0.55) 0%,
+    rgba(16, 24, 43, 0.25) 45%,
+    rgba(16, 24, 43, 0.65) 100%
+  );
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  right: 8%;
+  transform: translateY(-50%);
+  color: var(--color-cream);
+  z-index: 2;
+  max-width: 640px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-coral);
+  margin-bottom: 18px;
+}
+
+.content h1 {
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.1;
+  color: var(--color-cream);
+  margin-bottom: 18px;
+}
+
+.subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 253, 248, 0.85);
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.button {
+  text-decoration: none;
+  padding: 14px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.25s ease;
+  border: 1.5px solid transparent;
+}
+
+.button-primary {
+  background: var(--color-coral);
+  color: var(--color-cream);
+}
+
+.button-primary:hover {
+  background: var(--color-coral-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 107, 74, 0.4);
+}
+
+.button-secondary {
+  background: rgba(255, 253, 248, 0.08);
+  color: var(--color-cream);
+  border-color: rgba(255, 253, 248, 0.5);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 253, 248, 0.18);
+  transform: translateY(-2px);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(255, 253, 248, 0.7);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ===== How it works ===== */
+.how-it-works {
+  background: var(--color-sand);
+  padding: 90px 8%;
+}
+
+.how-it-works-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.how-it-works h2 {
+  font-size: 32px;
+  color: var(--color-ink);
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.step {
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  padding: 28px 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.step-mark {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-coral-dark);
+  margin-bottom: 12px;
+}
+
+.step p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    top: 46%;
+  }
+}
