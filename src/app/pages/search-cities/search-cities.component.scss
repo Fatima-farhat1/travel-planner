@@ -75,9 +75,7 @@ input {
 .search-button:hover {
     background-color: rgba(0, 0, 0, 0.2);
 
-}*/
-
-.search-page {
+}*/.search-page {
   min-height: 100vh;
   background: var(--color-sand);
   padding-top: 1px; /* clears the fixed navbar without a hard seam */
@@ -183,6 +181,13 @@ h3 {
   cursor: not-allowed;
 }
 
+.no-results {
+  text-align: center;
+  color: rgba(31, 36, 48, 0.6);
+  font-size: 14px;
+  margin: -20px 0 40px;
+}
+
 /* ===== Results ===== */
 .results {
   max-width: 920px;
@@ -198,6 +203,10 @@ h3 {
   flex-direction: column;
 }
 
+.result-image-link {
+  display: block;
+}
+
 .result-image {
   height: 160px;
   background-size: cover;
@@ -206,6 +215,10 @@ h3 {
 
 .result-body {
   padding: 18px 20px 22px;
+}
+
+.result-title-link {
+  text-decoration: none;
 }
 
 .result-body h4 {
@@ -221,6 +234,24 @@ h3 {
   margin: 0 0 16px;
 }
 
+.result-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.details-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-coral-dark);
+  text-decoration: none;
+}
+
+.details-link:hover {
+  text-decoration: underline;
+}
+
 .save-button {
   font-size: 13px;
   font-weight: 600;
@@ -231,6 +262,7 @@ h3 {
   color: var(--color-teal);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
 }
 
 .save-button:hover {

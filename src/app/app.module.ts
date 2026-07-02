@@ -12,6 +12,7 @@ import { CityDetailsComponent } from './pages/city-details/city-details.componen
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { SignupComponent } from './pages/signup/signup.component';
     LoginComponent,
     SignupComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

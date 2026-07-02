@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CityResult } from '../search-cities/search-cities.component';
+import { CityResult } from '../../models/city.model';
 import { FavoritesService } from '../../services/favorites.service';
 
 @Component({

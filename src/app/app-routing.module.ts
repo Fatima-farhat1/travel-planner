@@ -10,7 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'city', component: CityDetailsComponent },
+  { path: 'city/:id', component: CityDetailsComponent },
   { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard] },
   { path: 'search-city', component: SearchCitiesComponent },
   { path: 'login', component: LoginComponent },

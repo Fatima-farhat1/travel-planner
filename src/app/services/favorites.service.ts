@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CityResult } from '../pages/search-cities/search-cities.component';
+import { CityResult } from '../models/city.model';
 
 const STORAGE_KEY = 'travel_app_favorites';
 
@@ -12,7 +12,7 @@ export class FavoritesService {
   favorites$ = this.favoritesSubject.asObservable();
 
   private restore(): CityResult[] {
-    const raw = localStorage.getItem(STORAGE_KEY);//where data saved 
+    const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : [];
   }
 

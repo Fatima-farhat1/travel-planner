@@ -17,7 +17,6 @@
         </button>
         
 </div>-->
-
 <div class="search-page">
   <div class="search-cities-container">
     <span class="eyebrow">Step 1 of 3</span>
@@ -41,21 +40,35 @@
       </div>
     </div>
 
-    <button type="button" [disabled]="city.invalid" class="search-button" (click)="onSearch()">
-      Search
+    <button type="button" [disabled]="city.invalid || loading" class="search-button" (click)="onSearch()">
+      {{ loading ? 'Searching…' : 'Search' }}
     </button>
+
+    <div *ngIf="errorMessage" class="error-message" style="margin-top: 18px;">
+      {{ errorMessage }}
+    </div>
   </div>
 
-  <!-- Results — wire this up to your real API response -->
+  <p *ngIf="!loading && !errorMessage && hasSearched && !results.length" class="no-results">
+    No cities matched that search. Try a different name.
+  </p>
+
   <div class="results" *ngIf="results.length">
     <div class="ticket-card result-card" *ngFor="let result of results">
-      <div class="result-image" [style.backgroundImage]="'url(' + result.image + ')'"></div>
+      <a [routerLink]="['/city', result.id]" class="result-image-link">
+        <div class="result-image" [style.backgroundImage]="'url(' + result.image + ')'"></div>
+      </a>
       <div class="result-body">
-        <h4>{{ result.name }}</h4>
+        <a [routerLink]="['/city', result.id]" class="result-title-link">
+          <h4>{{ result.name }}</h4>
+        </a>
         <p>{{ result.description }}</p>
-        <button class="save-button" (click)="saveFavorite(result)" [disabled]="isSaved(result)">
-          {{ isSaved(result) ? 'Saved ✓' : 'Save to favorites' }}
-        </button>
+        <div class="result-actions">
+          <a [routerLink]="['/city', result.id]" class="details-link">View details →</a>
+          <button class="save-button" (click)="saveFavorite(result)" [disabled]="isSaved(result)">
+            {{ isSaved(result) ? 'Saved ✓' : 'Save to favorites' }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
