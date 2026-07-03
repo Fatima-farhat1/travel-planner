@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CityResult } from '../models/city.model';
-
-const STORAGE_KEY = 'travel_app_favorites';
+import { AuthService, User } from './auth.service';
+import { STORAGE_KEYS } from './storage-keys.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
-  private favoritesSubject = new BehaviorSubject<CityResult[]>(this.restore());
+  private favoritesSubject = new BehaviorSubject<CityResult[]>([]);
   favorites$ = this.favoritesSubject.asObservable();
 
-  private restore(): CityResult[] {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+  /** localStorage key for whichever user is currently logged in (or the guest bucket) */
+  private activeKey = STORAGE_KEYS.guestFavorites;
+
+  constructor(private auth: AuthService) {
+    this.loadForUser(this.auth.currentUser);
+    // whenever someone logs in or out, switch to that person's own favorites list
+    this.auth.currentUser$.subscribe(user => this.loadForUser(user));
+  }
+
+  private keyFor(user: User | null): string {
+    return user ? `${STORAGE_KEYS.favoritesPrefix}${user.email}` : STORAGE_KEYS.guestFavorites;
+  }
+
+  private loadForUser(user: User | null): void {
+    this.activeKey = this.keyFor(user);
+    const raw = localStorage.getItem(this.activeKey);
+    this.favoritesSubject.next(raw ? JSON.parse(raw) : []);
   }
 
   private persist(list: CityResult[]): void {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    localStorage.setItem(this.activeKey, JSON.stringify(list));
     this.favoritesSubject.next(list);
   }
 

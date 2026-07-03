@@ -1,0 +1,24 @@
+<div class="admin-page">
+  <div class="admin-header">
+    <span class="eyebrow">Admin</span>
+    <h2>Dashboard overview</h2>
+    <p class="subtitle">A quick look at everyone using Travel Planner.</p>
+  </div>
+
+  <div class="stat-cards">
+    <div class="stat-card">
+      <span class="stat-value">{{ totalUsers }}</span>
+      <span class="stat-label">Total users</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{{ totalFavorites }}</span>
+      <span class="stat-label">Cities saved across all users</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{{ totalAdmins }}</span>
+      <span class="stat-label">Admin accounts</span>
+    </div>
+  </div>
+
+  <button class="manage-button" routerLink="/admin/users">Manage users →</button>
+</div>

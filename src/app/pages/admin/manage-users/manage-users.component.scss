@@ -1,0 +1,121 @@
+.manage-users-page {
+  min-height: 100vh;
+  background: var(--color-sand);
+  padding: 110px 24px 80px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-coral-dark);
+  margin-bottom: 10px;
+}
+
+.page-header h2 {
+  font-size: 28px;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: rgba(31, 36, 48, 0.65);
+}
+
+.table-card {
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(31, 36, 48, 0.5);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+td {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-line);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.view-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-coral-dark);
+  text-decoration: none;
+}
+
+.view-link:hover {
+  text-decoration: underline;
+}
+
+.remove-button {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1.5px solid #d23b2e;
+  color: #d23b2e;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.remove-button:hover:not(:disabled) {
+  background: #d23b2e;
+  color: #fff;
+}
+
+.remove-button:disabled {
+  border-color: var(--color-line);
+  color: rgba(31, 36, 48, 0.35);
+  cursor: not-allowed;
+}
+
+.empty-state {
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.empty-state p {
+  font-size: 15px;
+  color: rgba(31, 36, 48, 0.7);
+}

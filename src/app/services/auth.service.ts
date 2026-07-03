@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
+import { STORAGE_KEYS } from './storage-keys.service';
+
+export type UserRole = 'admin' | 'user';
 
 export interface User {
   name: string;
   email: string;
+  role: UserRole;
 }
 
-const STORAGE_KEY = 'travel_app_user';
-const USERS_KEY = 'travel_app_users'; // mock "database" of registered users
+interface StoredUser extends User {
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -27,29 +32,37 @@ export class AuthService {
   }
 
   private restoreSession(): User | null {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
+    const raw = localStorage.getItem(STORAGE_KEYS.currentUser);
+    if (!raw) {
+      return null;
+    }
+    const user = JSON.parse(raw);
+    // older sessions saved before roles existed won't have one — default to 'user'
+    return { ...user, role: user.role || 'user' };
   }
 
-  private getRegisteredUsers(): Array<User & { password: string }> {
-    const raw = localStorage.getItem(USERS_KEY);
+  private getRegisteredUsers(): StoredUser[] {
+    const raw = localStorage.getItem(STORAGE_KEYS.registeredUsers);
     return raw ? JSON.parse(raw) : [];
   }
 
   /**
    * Mock signup — in a real app this hits a backend.
-   * Swap the body of this method for an HttpClient call when the API is ready.
+   * The very first person to ever sign up becomes the admin account,
+   * for demo purposes. Everyone after that is a regular user.
    */
   signup(name: string, email: string, password: string): Observable<User> {
     const users = this.getRegisteredUsers();
     if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
       throw new Error('An account with this email already exists.');
     }
-    const newUser = { name, email, password };
-    users.push(newUser);
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
 
-    const user: User = { name, email };
+    const role: UserRole = users.length === 0 ? 'admin' : 'user';
+    const newUser: StoredUser = { name, email, password, role };
+    users.push(newUser);
+    localStorage.setItem(STORAGE_KEYS.registeredUsers, JSON.stringify(users));
+
+    const user: User = { name, email, role };
     return of(user).pipe(
       delay(500), // simulate network latency for the demo
       tap(u => this.setSession(u))
@@ -67,7 +80,7 @@ export class AuthService {
     if (!match) {
       throw new Error('Incorrect email or password.');
     }
-    const user: User = { name: match.name, email: match.email };
+    const user: User = { name: match.name, email: match.email, role: match.role || 'user' };
     return of(user).pipe(
       delay(500),
       tap(u => this.setSession(u))
@@ -75,12 +88,12 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEYS.currentUser);
     this.currentUserSubject.next(null);
   }
 
   private setSession(user: User): void {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+    localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(user));
     this.currentUserSubject.next(user);
   }
 }

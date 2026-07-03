@@ -1,37 +1,50 @@
 <div class="auth-page">
-  <div class="auth-card">
-    <span class="eyebrow">Welcome back</span>
-    <h2>Log in to your account</h2>
-    <p class="subtitle">Pick up your saved cities right where you left them.</p>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <label>
-        Email
-        <input type="email" formControlName="email" placeholder="you@example.com" />
-        <span class="error-message" *ngIf="email.touched && email.invalid">
-          Enter a valid email address
-        </span>
-      </label>
-
-      <label>
-        Password
-        <input type="password" formControlName="password" placeholder="••••••••" />
-        <span class="error-message" *ngIf="password.touched && password.invalid">
-          Password must be at least 6 characters
-        </span>
-      </label>
-
-      <div class="error-message banner" *ngIf="serverError">
-        {{ serverError }}
-      </div>
-
-      <button type="submit" class="submit-button" [disabled]="form.invalid || loading">
-        {{ loading ? 'Logging in…' : 'Log in' }}
-      </button>
-    </form>
-
-    <p class="switch-link">
-      New here? <a routerLink="/signup">Create an account</a>
+  <div class="auth-brand-panel">
+    <span class="brand-mark">✈</span>
+    <h1>Pick up your trip planning right where you left it.</h1>
+    <p>
+      Log in to see the cities you've saved, keep exploring new destinations,
+      and get back to planning your next trip in seconds.
     </p>
   </div>
+
+  <div class="auth-form-panel">
+    <div class="auth-card">
+      <span class="eyebrow">Welcome back</span>
+      <h2>Log in to your account</h2>
+      <p class="subtitle">Pick up your saved cities right where you left them.</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label>
+          Email
+          <input type="email" formControlName="email" placeholder="you@example.com" />
+          <span class="error-message" *ngIf="email.touched && email.invalid">
+            Enter a valid email address
+          </span>
+        </label>
+
+        <label>
+          Password
+          <input type="password" formControlName="password" placeholder="••••••••" />
+          <span class="error-message" *ngIf="password.touched && password.invalid">
+            Password must be at least 6 characters
+          </span>
+        </label>
+
+        <div class="error-message banner" *ngIf="serverError">
+          {{ serverError }}
+        </div>
+
+        <button type="submit" class="submit-button" [disabled]="form.invalid || loading">
+          {{ loading ? 'Logging in…' : 'Log in' }}
+        </button>
+      </form>
+
+      <p class="switch-link">
+        New here? <a routerLink="/signup">Create an account</a>
+      </p>
+    </div>
+  </div>
+
 </div>

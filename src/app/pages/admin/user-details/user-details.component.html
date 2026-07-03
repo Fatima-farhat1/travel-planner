@@ -1,0 +1,42 @@
+<div class="user-detail-page">
+
+  <a routerLink="/admin/users" class="back-link">← Back to all users</a>
+
+  <div class="not-found" *ngIf="notFound">
+    <p>No user found with that email.</p>
+  </div>
+
+  <ng-container *ngIf="summary">
+    <div class="profile-card">
+      <div class="avatar">{{ summary.name.charAt(0).toUpperCase() }}</div>
+      <div class="profile-info">
+        <h2>{{ summary.name }}</h2>
+        <p class="email">{{ summary.email }}</p>
+        <span class="role-badge" [ngClass]="summary.role">{{ summary.role }}</span>
+      </div>
+    </div>
+
+    <div class="favorites-header">
+      <h3>Favorite cities</h3>
+      <p class="subtitle">{{ summary.favorites.length }} saved.</p>
+    </div>
+
+    <div class="results" *ngIf="summary.favorites.length; else empty">
+      <div class="ticket-card result-card" *ngFor="let fav of summary.favorites">
+        <div class="result-image" [style.backgroundImage]="'url(' + fav.image + ')'"></div>
+        <div class="result-body">
+          <h4>{{ fav.name }}</h4>
+          <p>{{ fav.description }}</p>
+          <button class="remove-button" (click)="removeFavorite(fav)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #empty>
+      <div class="empty-state">
+        <p>This user hasn't saved any favorites yet.</p>
+      </div>
+    </ng-template>
+  </ng-container>
+
+</div>

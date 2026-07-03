@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +13,10 @@ import { CityDetailsComponent } from './pages/city-details/city-details.componen
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ManageUsersComponent } from './pages/admin/manage-users/manage-users.component';
+import { UserDetailsComponent } from './pages/admin/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +27,13 @@ import { HttpClientModule } from '@angular/common/http';
     CityDetailsComponent,
     FavoritesComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent,
+    AdminComponent,
+    ManageUsersComponent,
+    UserDetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

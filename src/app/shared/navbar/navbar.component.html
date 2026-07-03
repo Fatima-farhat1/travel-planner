@@ -1,4 +1,4 @@
-<nav>
+<!--<nav>
   <div class="navbar-container">
     <a routerLink="/" class="brand">
       <span class="brand-mark">✈</span>
@@ -21,5 +21,30 @@
       </ng-template>
     </div>
   </div>
+</nav>-->
+<nav>
+  <div class="navbar-container">
+    <a routerLink="/" class="brand">
+      <span class="brand-mark">✈</span>
+      <h1>Travel Planner</h1>
+    </a>
+
+    <div class="navbar-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/search-city" routerLinkActive="active">Search</a>
+      <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+
+      <ng-container *ngIf="(currentUser$ | async) as user; else loggedOut">
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a *ngIf="user.role === 'admin'" routerLink="/admin" routerLinkActive="active">Admin</a>
+        <span class="user-chip">Hi, {{ user.name }}</span>
+        <button class="btn-ghost" (click)="onLogout()">Log out</button>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <a routerLink="/login" class="btn-ghost">Log in</a>
+        <a routerLink="/signup" class="btn-solid">Sign up</a>
+      </ng-template>
+    </div>
+  </div>
 </nav>
- 

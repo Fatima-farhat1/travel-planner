@@ -1,0 +1,36 @@
+<div class="dashboard-page">
+
+  <div class="profile-card" *ngIf="user">
+    <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
+    <div class="profile-info">
+      <h2>{{ user.name }}</h2>
+      <p class="email">{{ user.email }}</p>
+      <span class="role-badge" [ngClass]="user.role">{{ user.role }}</span>
+    </div>
+  </div>
+
+  <div class="dashboard-header">
+    <span class="eyebrow">Your shortlist</span>
+    <h2>Your favorite cities</h2>
+    <p class="subtitle">Everything you've saved while browsing, in one place.</p>
+  </div>
+
+  <div class="results" *ngIf="favorites.length; else empty">
+    <div class="ticket-card result-card" *ngFor="let fav of favorites">
+      <div class="result-image" [style.backgroundImage]="'url(' + fav.image + ')'"></div>
+      <div class="result-body">
+        <h4>{{ fav.name }}</h4>
+        <p>{{ fav.description }}</p>
+        <button class="remove-button" (click)="remove(fav)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <div class="empty-state">
+      <p>No favorites yet. Search a destination and save the ones you like.</p>
+      <button class="search-link" routerLink="/search-city">Search destinations</button>
+    </div>
+  </ng-template>
+
+</div>

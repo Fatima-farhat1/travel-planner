@@ -1,0 +1,138 @@
+.user-detail-page {
+  min-height: 100vh;
+  background: var(--color-sand);
+  padding: 110px 24px 80px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-coral-dark);
+  text-decoration: none;
+  margin-bottom: 28px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.not-found,
+.empty-state {
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.not-found p,
+.empty-state p {
+  font-size: 15px;
+  color: rgba(31, 36, 48, 0.7);
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 28px 32px;
+  margin-bottom: 40px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  color: var(--color-cream);
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-info h2 {
+  font-size: 22px;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.email {
+  font-size: 14px;
+  color: rgba(31, 36, 48, 0.6);
+  margin-bottom: 10px;
+}
+
+.favorites-header {
+  margin-bottom: 24px;
+}
+
+.favorites-header h3 {
+  font-size: 22px;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(31, 36, 48, 0.6);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-image {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.result-body {
+  padding: 18px 20px 22px;
+}
+
+.result-body h4 {
+  font-size: 19px;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
+.result-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(31, 36, 48, 0.75);
+  margin: 0 0 16px;
+}
+
+.remove-button {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1.5px solid #d23b2e;
+  color: #d23b2e;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.remove-button:hover {
+  background: #d23b2e;
+  color: #fff;
+}

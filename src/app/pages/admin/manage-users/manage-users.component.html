@@ -1,0 +1,41 @@
+<div class="manage-users-page">
+  <div class="page-header">
+    <span class="eyebrow">Admin</span>
+    <h2>Manage users</h2>
+    <p class="subtitle">{{ users.length }} registered {{ users.length === 1 ? 'account' : 'accounts' }}.</p>
+  </div>
+
+  <div class="table-card" *ngIf="users.length; else empty">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Favorites</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td><span class="role-badge" [ngClass]="user.role">{{ user.role }}</span></td>
+          <td>{{ user.favorites.length }}</td>
+          <td class="actions">
+            <a class="view-link" [routerLink]="['/admin/users', user.email]">View →</a>
+            <button class="remove-button" (click)="removeUser(user.email)" [disabled]="user.role === 'admin'">
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #empty>
+    <div class="empty-state">
+      <p>No users have signed up yet.</p>
+    </div>
+  </ng-template>
+</div>
